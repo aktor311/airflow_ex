@@ -5,11 +5,11 @@ from airflow.operators.bash import BashOperator
 default_args = {
     "owner": "me",
     "depends_on_past": False,
-    "start_date": datetime(2024, 10, 7),
+    "start_date": datetime(2024, 10, 13),
     #"retry_delay": timedelta(minutes=0.1)
 }
 
-dag = DAG('dag1', default_args=default_args, schedule_interval='0 1 * * *', catchup=True,
+dag = DAG('dag1', default_args=default_args, schedule_interval='0 23 * * *', catchup=True,
           max_active_tasks=3, max_active_runs=1, tags=["Test", "My first dag"])
 
 task1 = BashOperator(
