@@ -22,7 +22,7 @@ task1 = BashOperator(
 
 task2 = BashOperator(
     task_id='task2',
-    bash_command='python3 /airflow/scripts/dag2/task2.py',
+    bash_command='python3 /airflow/scripts/dag2/task2.py --date {{ ds }} ' +f'--host {connection.host} --dbname {connection.schema} --user {connection.login} --jdbc_password {connection.password} --port 5432',
     dag=dag
 )
 
